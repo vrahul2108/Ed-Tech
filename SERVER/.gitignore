@@ -1,0 +1,34 @@
+# Dependencies
+# This ignores all node_modules folders within the repository
+**/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+*.pid
+*.seed
+*.log
+*.tmp
+pids
+logs
+results
+
+# Build and Temp folders (common for frontend build processes)
+dist
+build
+temp
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+
+readme.txt
+# Environment Variables and Credentials
+# IMPORTANT: Never commit files containing secrets/API keys
+.env
+.env.*
