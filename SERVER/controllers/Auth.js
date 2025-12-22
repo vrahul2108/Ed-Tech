@@ -235,12 +235,73 @@ exports.login = async (req, res)=>{
 
 exports.changePwd = async(req, res)=>{
     //extract data
+    try{
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+    const email = req.user.email;
 
-    //get old, new and confirm pwd
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
 
-    //validation
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "New password and confirm password do not match",
+      });
+    }
 
-    //update pwd in DB
+    const user = await User.findOne({email});
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const isPasswordMatched = await bcrypt.compare(
+      oldPassword,
+      user.password
+    );
+
+    if (!isPasswordMatched) {
+      return res.status(401).json({
+        success: false,
+        message: "Old password is incorrect",
+      });
+    }
+
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedNewPassword;
+    await user.save();
+
     //send Mail
+    await mailSender(
+      user.email,
+      "Password Changed Successfully",
+      `
+        <h2>Hello ${user.firstName},</h2>
+        <p>Your password has been changed successfully.</p>
+        <p>If this was not you, please reset your password immediately.</p>
+        <br/>
+        <p>Regards,<br/>Auth System Team</p>
+      `
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully. Email sent.",
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      success: false,
+      message: "Error while changing password",
+    });
+  }
     //return res
-}
+}  
