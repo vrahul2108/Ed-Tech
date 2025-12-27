@@ -27,3 +27,21 @@ exports.createTag = async(req, res)=>{
         })
     }
 }
+
+exports.getAllTags = async(req, res)=>{
+    try{
+        const allTags = await Tags.find({},{ name: true, description: description});
+
+        res.status(200).json({
+            success: true,
+            message: 'All tags fetched successfully'
+        })
+
+    }catch(e){
+        console.log(e);
+        return res.status(500).json({
+            success: false,
+            message: 'Internal Server Error'
+        })
+    }
+}
