@@ -24,6 +24,10 @@ exports.auth = async(req, res, next) =>{
             const decode = await jwt.verify(token, process.env.JWT_SECRET);
             console.log(decode);
             req.user = decode;
+
+            // jwt.verify() → checking if ID is real & not expired
+            //decode → details written on the ID
+            //req.user → attaching the ID to the request
             
         }catch(e){
             //verification issue
