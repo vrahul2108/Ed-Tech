@@ -1,6 +1,7 @@
 const Subsection = require('../models/SubSection');
 const Section = require('../models/Section');
 const {uploadImageToCloudinary} = require('../utils/ImageUploader');
+const SubSection = require('../models/SubSection');
 
 exports.createSubsection = async(req, res)=>{
     try{
@@ -58,18 +59,54 @@ exports.createSubsection = async(req, res)=>{
     }
 };
 
-exports.updatedSubsection = async (req, res)=>{
+exports.updateSubsection = async(req, res)=>{
     try{
+        const {SubsectionName, SubsectionId} = req.body;
 
+        if(!SubsectionName || !SubsectionId){
+            return res.status(400).json({
+                success: false,
+                message: 'Unable to fetch Data',
+            });
+        }
+
+        //update data
+        const section = await SubSection.findByIdAndUpdate(
+            SubsectionId,
+            {SubsectionName},
+            {new:true}
+        )
+
+        return res.status(200).json({
+                success: true,
+                message: 'Section updated successfully',
+            });
+        
     }catch(e){
-
+        console.log(e);
+        return res.status(500).json({
+                success: false,
+                message: 'Internal Server Error',
+            });
     }
-}
+};
 
 exports.deleteSubsection = async (req, res)=>{
     try{
+        const {SubsectionId} = req.body;
+
+        await Subsection.findByIdAndDelete({SubsectionId});
+
+        return res.status(200).json({
+                success: true,
+                message: 'Section updated successfully',
+            });
 
     }catch(e){
-        
+        console.log(e);
+        return res.status(500).json({
+                success: false,
+                message: 'Section deleted successfully',
+            });
     }
 }
