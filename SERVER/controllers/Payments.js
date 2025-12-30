@@ -88,3 +88,75 @@ exports.capturePayment = async(req, res)=>{
 }
 
 //verifying signature of Razorpay and Server
+exports.verifySignature = async(req, res)=>{
+    const webhookSecret = "12345678";
+
+    const signature = req.headers["x-razorpay-signature"];
+    
+    crypto.createHmac("sha256", webhookSecret);
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest("hex");
+
+    if(signature === digest){
+        console.log('Payment is Authorized');
+
+        const {userId, courseId} = req.body.payload.payment.notes;
+
+        try{
+            //fulfill the action
+
+            //find the course and enroll the student in it.
+            const enrolledCourse = await Course.findByIdAndUpdate(
+                {_id: courseId},
+                {$push:{studentEnrolled:userId}},
+                {new: true},
+            );
+
+            if(!enrolledCourse){
+                return res.json({
+                    success: false,
+                    message: 'could not find the course',
+                });
+            }
+
+            //find the student and add course in list of enrolled courses
+
+            const enrolledStudent = await User.findOneAndUpdate(
+                {_id: userId},
+                {
+                    $push:{courses:courseId}
+                },
+                {new:true},
+            );
+
+            console.log(enrolledStudent);
+
+            //mail send kro confirmation ka
+            const emailResponse = await mailSender(
+                enrolledStudent.email,
+                "Congratulatons from StudyNotion",
+                "Congratulations! You are onboarded on the new course"
+            );
+
+            console.log(emailResponse);
+            
+            return res.status(200).json({
+                success: true,
+                message: 'Signature Verified and course added',
+            });
+            
+        }catch(e){
+            console.log(e);
+            return res.status(500).json({
+                success: false,
+                message: e.message,
+            });
+        }
+    }
+    else{
+        return res.status(400).json({
+              success: false,
+              message: 'Internal Server Error',
+        });
+    }
+}
