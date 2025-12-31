@@ -48,7 +48,7 @@ exports.capturePayment = async(req, res)=>{
         });
     }
 
-    //object create
+    //order create
     const amount = course.price;
     const currency = "INR";
 
@@ -159,4 +159,4 @@ exports.verifySignature = async(req, res)=>{
               message: 'Internal Server Error',
         });
     }
-}
+};
