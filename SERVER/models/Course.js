@@ -9,7 +9,7 @@ const courseSchema = new mongoose.Schema({
         type: String,
     },
     instructor :{
-        type: mongoose.Schema.type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User"
     },
@@ -17,11 +17,11 @@ const courseSchema = new mongoose.Schema({
         type: String,
     },
     courseContent: [{
-        type: mongoose.Schema.type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Section"
     }],
     ratingAndReviews: [{
-        type: mongoose.Schema.type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "RatingAndReview"
     }],
     price: {
@@ -40,7 +40,7 @@ const courseSchema = new mongoose.Schema({
 		ref: "Category",
 	},
     studentEnrolled: {
-        type: mongoose.Schema.type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User",
     },

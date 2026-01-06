@@ -43,7 +43,7 @@ exports.createSection = async(req, res)=>{
     }
 };
 
-exports.updateCourse = async(req, res)=>{
+exports.updateSection = async(req, res)=>{
     try{
         const {sectionName, sectionId} = req.body;
 
