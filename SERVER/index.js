@@ -10,10 +10,11 @@ const database = require('./config/database');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const {cloudinaryConnect} = require('./config/cloudinary');
 const dotenv = require('dotenv');
-
 dotenv.config();
+
+const {cloudinaryConnect} = require('./config/cloudinary');
+
 const PORT = process.env.PORT || 4000;
 
 //database connect
