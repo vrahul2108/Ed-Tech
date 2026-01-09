@@ -2,6 +2,7 @@ const Category = require("../models/Category");
 
 exports.createCategory = async (req, res) => {
 	try {
+        
 		const { name, description } = req.body;
 		if (!name) {
 			return res

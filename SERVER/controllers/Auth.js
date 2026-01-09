@@ -176,7 +176,8 @@ exports.login = async (req, res)=>{
     try{
         //extract data
         const {email, password} = req.body;
-
+        // console.log('trying to login');
+        
         //validate data
         if(!email || !password) {
             return res.status(401).json({
@@ -202,8 +203,11 @@ exports.login = async (req, res)=>{
     const payload = {
         email: user.email,
         id: user._id,
-        role: user.accountType
+        accountType: user.accountType
     }
+
+   
+    
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn : "2h"
     });
