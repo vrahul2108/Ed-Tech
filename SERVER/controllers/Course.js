@@ -6,7 +6,7 @@ const {uploadImageToCloudinary} = require('../utils/ImageUploader');
 exports.createCourse = async (req, res)=>{
     try{
         
-        const {courseName, courseDescription, whatYouWillLearn, price, tag, Category,status,instructions} = req.body;
+        let {courseName, courseDescription, whatYouWillLearn, price, tag, category,status,instructions} = req.body;
 
         //get thumbnail
         const thumbnail = req.files.thumbnailImage;
@@ -99,7 +99,7 @@ exports.createCourse = async (req, res)=>{
             data: newCourse
         })
 
-    }catch(e){
+    }catch(error){
         console.error(error);
 		res.status(500).json({
 			success: false,
@@ -157,7 +157,7 @@ exports.getCourseDetails = async (req, res) => {
                                             }
                                         )
                                         .populate("category")
-                                        .populate("ratingAndreviews")
+                                        // .populate("ratingAndreviews")
                                         .populate({
                                             path:"courseContent",
                                             populate:{

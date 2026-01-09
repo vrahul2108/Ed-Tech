@@ -40,8 +40,8 @@ const courseSchema = new mongoose.Schema({
 		ref: "Category",
 	},
     studentEnrolled: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
         ref: "User",
     },
     instructions: {
