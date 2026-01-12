@@ -6,11 +6,11 @@ import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from "../components/core/HomePage/Button"
 import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../components/core/HomePage/CodeBlocks"
-import TimelineSection from '../components/core/HomePage/TimelineSection'
-import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection'
-import InstructorSection from '../components/core/HomePage/InstructorSection'
-import Footer from '../components/common/Footer'
-import ExploreMore from '../components/core/HomePage/ExploreMore'
+// import TimelineSection from '../components/core/HomePage/TimelineSection'
+// import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection'
+// import InstructorSection from '../components/core/HomePage/InstructorSection'
+// import Footer from '../components/common/Footer'
+// import ExploreMore from '../components/core/HomePage/ExploreMore'
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       <div className='relative flex flex-col items-center justify-between w-11/12 mx-auto text-white max-w-maxContent'>
 
         <Link to={"/signup"}>
-            <div className='p-1 mx-auto mt-16 font-bold transition-all duration-200 rounded-full  group bg-richblack-800 text-richblack-200 hover:scale-95 w-fit'>
+            <div className='p-1 mx-auto mt-16 font-bold transition-all duration-200 rounded-full group bg-richblack-800 text-richblack-200 hover:scale-95 w-fit'>
                 <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
                 transition-all duration-200 group-hover:bg-richblack-900'>
                     <p>Become an Instructor</p>
@@ -126,7 +126,7 @@ const Home = () => {
             />
         </div>
 
-            <ExploreMore />
+            {/* <ExploreMore /> */}
       </div>
 
       {/*Section 2  */}
@@ -178,9 +178,9 @@ const Home = () => {
                 
                 
 
-                <TimelineSection />
+                {/* <TimelineSection /> */}
 
-                <LearningLanguageSection />
+                {/* <LearningLanguageSection /> */}
 
             </div>
 
@@ -192,7 +192,7 @@ const Home = () => {
       {/*Section 3 */}
       <div className='flex-col items-center justify-between w-11/12 gap-8 mx-auto text-white max-w-maxContent first-letter bg-richblack-900'>
 
-            <InstructorSection />
+            {/* <InstructorSection /> */}
 
             <h2 className='mt-10 text-4xl text-center font-semobold'>review from Other Learners</h2>
             {/* Review Slider here */}
@@ -200,7 +200,7 @@ const Home = () => {
 
 
       {/*Footer */}
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   )
