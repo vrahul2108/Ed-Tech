@@ -6,11 +6,11 @@ import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from "../components/core/HomePage/Button"
 import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../components/core/HomePage/CodeBlocks"
-// import TimelineSection from '../components/core/HomePage/TimelineSection'
-// import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection'
-// import InstructorSection from '../components/core/HomePage/InstructorSection'
-// import Footer from '../components/common/Footer'
-// import ExploreMore from '../components/core/HomePage/ExploreMore'
+import TimelineSection from '../components/core/HomePage/TimelineSection'
+import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection'
+import InstructorSection from '../components/core/HomePage/InstructorSection'
+import Footer from '../components/common/Footer'
+import ExploreMore from '../components/core/HomePage/ExploreMore'
 
 const Home = () => {
   return (
@@ -126,7 +126,7 @@ const Home = () => {
             />
         </div>
 
-            {/* <ExploreMore /> */}
+            <ExploreMore />
       </div>
 
       {/*Section 2  */}
@@ -178,29 +178,26 @@ const Home = () => {
                 
                 
 
-                {/* <TimelineSection /> */}
+                <TimelineSection />
 
-                {/* <LearningLanguageSection /> */}
+                <LearningLanguageSection />
 
             </div>
-
-            
-
       </div>
 
 
       {/*Section 3 */}
       <div className='flex-col items-center justify-between w-11/12 gap-8 mx-auto text-white max-w-maxContent first-letter bg-richblack-900'>
 
-            {/* <InstructorSection /> */}
+            <InstructorSection />
 
-            <h2 className='mt-10 text-4xl text-center font-semobold'>review from Other Learners</h2>
+            <h2 className='mt-10 text-4xl text-center font-semobold'>...</h2>
             {/* Review Slider here */}
       </div>
 
 
       {/*Footer */}
-      {/* <Footer /> */}
+      <Footer />
 
     </div>
   )
