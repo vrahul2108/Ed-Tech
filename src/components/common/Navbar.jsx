@@ -2,7 +2,10 @@ import React from 'react'
 import { Link, matchPath } from 'react-router-dom'
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import {NavbarLinks} from "../../data/navbar-links"
-import { useLocation, useSelector } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux"
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import ProfileDropDown from '../core/Auth/ProfileDropDown';
 
 function Navbar() {
       const location = useLocation();
@@ -65,7 +68,7 @@ function Navbar() {
               </button>
             </Link>
           )}
-          {token !== null && <ProfileDropdown />}
+          {token !== null && <ProfileDropDown />}
         </div>
         
     </div>
