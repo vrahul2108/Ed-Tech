@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, matchPath } from 'react-router-dom'
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import {NavbarLinks} from "../../data/navbar-links"
@@ -6,12 +6,53 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux"
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import ProfileDropDown from '../core/Auth/ProfileDropDown';
+import { apiConnector } from '../../services/apiconnector';
+import { categories } from '../../services/apis';
+import { IoIosArrowDropdownCircle } from 'react-icons/io';
+
+
+
+const subLinks = [
+  {
+    title: "Python",
+    link: "/catalog/python",
+  },
+  {
+    title: "javascript",
+    link: "/catalog/javascript",
+  },
+  {
+    title: "web-development",
+    link: "/catalog/web-development",
+  },
+  {
+    title: "Android Development",
+    link: "/catalog/Android Development",
+  },
+];
 
 function Navbar() {
       const location = useLocation();
       const { token } = useSelector((state) => state.auth)
       const { user } = useSelector((state) => state.profile)
       const { totalItems } = useSelector((state) => state.cart)
+      
+      // const [subLinks, setSubLinks] = useState([]);
+      // const fetchSublinks = async()=>{
+      //     try{
+      //       const result =await apiConnector("GET", categories.CATEGORIES_URL);
+      //       console.log("Printing sublinks result: " , result);
+      //       setSubLinks(result.data.data);
+      //     }
+      //     catch(e){
+      //       console.log('Could not fetch the category list');
+      //     }
+      //   }
+
+      // useEffect(()=>{
+      //   fetchSublinks();
+      // },[])
+
       const matchRoute = (route)=> {
     
           return matchPath({path:route}, location.pathname);
@@ -28,7 +69,11 @@ function Navbar() {
               NavbarLinks.map( (link, index) =>(
                    <li key={index}>
                     {
-                      link.title === "Catalog" ? (<div></div>) : (
+                      link.title === "Catalog" ? (
+                      <div className='flex items-center gap-2'>
+                        <p>{link.title}</p>
+                        <IoIosArrowDropdownCircle/>
+                      </div>) : (
                         <Link to={link?.path}>
                           <p className ={ `${matchRoute(link?.path)? 'text-yellow-25' : 'text-richblack-25' }  `}>
                             {link.title}
