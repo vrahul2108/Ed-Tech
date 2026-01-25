@@ -21,14 +21,7 @@ const subLinks = [
     title: "javascript",
     link: "/catalog/javascript",
   },
-  {
-    title: "web-development",
-    link: "/catalog/web-development",
-  },
-  {
-    title: "Android Development",
-    link: "/catalog/Android Development",
-  },
+  
 ];
 
 function Navbar() {
@@ -37,21 +30,21 @@ function Navbar() {
       const { user } = useSelector((state) => state.profile)
       const { totalItems } = useSelector((state) => state.cart)
       
-      // const [subLinks, setSubLinks] = useState([]);
-      // const fetchSublinks = async()=>{
-      //     try{
-      //       const result =await apiConnector("GET", categories.CATEGORIES_URL);
-      //       console.log("Printing sublinks result: " , result);
-      //       setSubLinks(result.data.data);
-      //     }
-      //     catch(e){
-      //       console.log('Could not fetch the category list');
-      //     }
-      //   }
+      const [ssubLinks, setSsubLinks] = useState([]);
+      const fetchSublinks = async()=>{
+          try{
+            const result =await apiConnector("GET", categories.CATEGORIES_URL);
+            console.log("Printing sublinks result: " , result);
+            setSsubLinks(result.data.data);
+          }
+          catch(e){
+            console.log('Could not fetch the category list');
+          }
+        }
 
-      // useEffect(()=>{
-      //   fetchSublinks();
-      // },[])
+      useEffect(()=>{
+        fetchSublinks();
+      },[])
 
       const matchRoute = (route)=> {
     
@@ -70,9 +63,32 @@ function Navbar() {
                    <li key={index}>
                     {
                       link.title === "Catalog" ? (
-                      <div className='flex items-center gap-2'>
+                      <div className='relative flex items-center gap-2 group'>
                         <p>{link.title}</p>
                         <IoIosArrowDropdownCircle/>
+
+                        <div className='invisible absolute left-[50%] top-[50%] flex flex-col
+                         -translate-x-[50%] translate-y-[40%]
+                         rounded-md bg-richblack-5 p-4 text-richblack-900 opacity-0 duration-200
+                         transition-all group-hover:visible group-hover:opacity-100 lg:w-[300px]'>
+
+                          <div className='absolute left-[50%] top-0 h-6 w-6 rotate-45 rounded 
+                          translate-x-[80%] -translate-y-[40%] bg-richblack-5'>
+                          </div>
+
+                        {
+                          subLinks.length ? (
+                            
+                              subLinks.map( (sublink, index)=>(
+                                <Link to={`${sublink.link}`} key= {index} 
+                                className="block px-4 py-2 text-sm transition-all duration-200 rounded-md text-richblack-900 hover:bg-richblack-100 hover:text-richblack-800">
+                                  <p>{sublink.title}</p>
+                                </Link>
+                              ))  
+                          ) : (<div></div>)
+                        }
+                        </div>
+
                       </div>) : (
                         <Link to={link?.path}>
                           <p className ={ `${matchRoute(link?.path)? 'text-yellow-25' : 'text-richblack-25' }  `}>
