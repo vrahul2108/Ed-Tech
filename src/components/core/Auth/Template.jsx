@@ -13,7 +13,7 @@ function Template({ title, description1, description2, image, formType }) {
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className="flex flex-col-reverse justify-between w-11/12 py-12 mx-auto max-w-maxContent gap-y-12 md:flex-row md:gap-y-0 md:gap-x-12">
+        <div className="flex flex-col-reverse justify-center w-11/12 py-12 mx-auto max-w-maxContent gap-y-12 md:flex-row md:gap-y-0 md:gap-x-12">
           <div className="mx-auto w-11/12 max-w-[400px] md:mx-0">
             <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
               {title}
@@ -26,7 +26,7 @@ function Template({ title, description1, description2, image, formType }) {
             </p>
             {formType === "signup" ? <SignupForm /> : <LoginForm />}
           </div>
-          <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
+          {/* <div className="relative  mx-auto w-11/12 max-w-[400px] md:mx-0">
             <img
               src={frameImg}
               alt="Pattern"
@@ -42,7 +42,26 @@ function Template({ title, description1, description2, image, formType }) {
               loading="lazy"
               className="absolute z-10 -top-4 right-4"
             />
-          </div>
+          </div> */}
+          <div className="relative mx-auto w-11/12 max-w-[400px] md:mx-0 flex items-center justify-center">
+  
+  {/* Frame Image */}
+  <img
+    src={frameImg}
+    alt="Pattern"
+    className="w-full h-auto"
+  />
+
+  {/* Overlay Image */}
+  <img
+    src={image}
+    alt="Students"
+    className="absolute z-10 w-full h-auto right-4"
+  />
+
+</div>
+
+
         </div>
       )}
     </div>

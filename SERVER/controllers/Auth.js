@@ -120,7 +120,7 @@ exports.signUp = async(req, res)=>{
                 success: false,
                 message: 'OTP Not found',
             })
-        }else if(otp !== recentOtp[0].otp){
+        }else if (String(otp) !== String(recentOtp[0].otp)) {
             return res.status(401).json({
                 success: false,
                 message: 'Invalid OTP'
@@ -165,7 +165,6 @@ exports.signUp = async(req, res)=>{
         return res.status(500).json({
             success: false,
             message: 'User can not registered Please try again !!!',
-            user
         })
     }
 }

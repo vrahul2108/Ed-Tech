@@ -86,7 +86,7 @@ function SignupForm() {
       {/* Tab */}
       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
       {/* Form */}
-      <form onSubmit={handleOnSubmit} className="flex flex-col w-full gap-y-4">
+      <form onSubmit={handleOnSubmit} className="flex flex-col w-full gap-y-2">
         <div className="flex gap-x-4">
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
@@ -147,12 +147,12 @@ function SignupForm() {
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              className="absolute right-3 top-[28px] z-[10] cursor-pointer"
             >
               {showPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEyeInvisible fontSize={20} fill="#AFB2BF" />
               ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEye fontSize={20} fill="#AFB2BF" />
               )}
             </span>
           </label>
@@ -171,12 +171,12 @@ function SignupForm() {
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              className="absolute right-3 top-[28px]  z-[10] cursor-pointer"
             >
               {showConfirmPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEyeInvisible fontSize={20} fill="#AFB2BF" />
               ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEye fontSize={20} fill="#AFB2BF" />
               )}
             </span>
           </label>
