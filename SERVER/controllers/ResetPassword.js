@@ -4,55 +4,49 @@ const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
-exports.resetPasswordToken = async(req, res)=>{
-    try{
-        //extract email
-    const email = req.body.email;
+exports.resetPasswordToken = async (req, res) => {
+	try {
+		const email = req.body.email;
+		const user = await User.findOne({ email: email });
+		if (!user) {
+			return res.json({
+				success: false,
+				message: `This Email: ${email} is not Registered With Us Enter a Valid Email `,
+			});
+		}
+		const token = crypto.randomBytes(20).toString("hex");
 
-    //check user for this email, email verification
-    const user = await User.findOne({email: email});
+		const updatedDetails = await User.findOneAndUpdate(
+			{ email: email },
+			{
+				token: token,
+				resetPasswordExpires: Date.now() + 3600000,
+			},
+			{ new: true }
+		);
+		console.log("DETAILS", updatedDetails);
 
-    if(!user){
-        return re.json({
-            success: false,
-            message: "Your email is not registered with us"
-        });
-    }
+		const url = `http://localhost:3000/update-password/${token}`;
 
-    //gen token
+		await mailSender(
+			email,
+			"Password Reset",
+			`Your Link for email verification is ${url}. Please click this url to reset your password.`
+		);
 
-    const token = crypto.randomUUID();
-
-    //update user by adding token and expiration time
-    const updatedDetails = await User.findOneAndUpdate(
-        {email: email},
-        {
-            token : token,
-            resetPasswordExpires: Date.now()+ 5*60*1000,
-        },
-        {new: true}
-    );
-
-    //create url
-
-    const url = `http://localhost:3000/update-password/${token}`;
-    //send mail containing url
-
-    await mailSender(email, "Password Reset Link",`Password reset link: ${url}`);
-
-    //return response
-    return res.json({
-        success: true,
-        message: 'Reset password successfully'
-    });
-    }
-    catch(e){
-        return res.status(500).json({
-        success: false,
-        message: 'Something went wrong while reset password'
-    });
-    }
-}
+		res.json({
+			success: true,
+			message:
+				"Email Sent Successfully, Please Check Your Email to Continue Further",
+		});
+	} catch (error) {
+		return res.json({
+			error: error.message,
+			success: false,
+			message: `Some Error in Sending the Reset Message`,
+		});
+	}
+};
 
 
 //Actual password reset

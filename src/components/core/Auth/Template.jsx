@@ -45,14 +45,14 @@ function Template({ title, description1, description2, image, formType }) {
           </div> */}
           <div className="relative mx-auto w-11/12 max-w-[400px] md:mx-0 flex items-center justify-center">
   
-  {/* Frame Image */}
+
   <img
     src={frameImg}
     alt="Pattern"
     className="w-full h-auto"
   />
 
-  {/* Overlay Image */}
+
   <img
     src={image}
     alt="Students"
