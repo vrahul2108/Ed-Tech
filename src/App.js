@@ -8,7 +8,7 @@ import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-
+import About from "./pages/About";
 function App() {
   return (
    <div className="flex flex-col w-screen min-h-screen bg-richblack-900 font-inter">
@@ -41,14 +41,14 @@ function App() {
           }
         />  
 
-      {/* <Route
+      <Route
           path="verify-email"
           element={
             <OpenRoute>
               <VerifyEmail />
             </OpenRoute>
           }
-        />   */}
+        />  
 
     <Route
           path="update-password/:id"
@@ -57,8 +57,19 @@ function App() {
               <UpdatePassword />
             </OpenRoute>
           }
+        /> 
+
+    <Route
+          path="about"
+          element={
+            <OpenRoute>
+              <About />
+            </OpenRoute>
+          }
         />   
     </Routes>
+
+     
 
     
    </div>

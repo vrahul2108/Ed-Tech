@@ -12,7 +12,7 @@ const authSlice = createSlice({
     reducers: {
         setSignupData(state, value) {
         state.signupData = value.payload;
-        },
+        },  
         setLoading(state, value) {
         state.loading = value.payload;
         },
