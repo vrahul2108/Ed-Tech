@@ -21,6 +21,18 @@ const subLinks = [
     title: "javascript",
     link: "/catalog/javascript",
   },
+  {
+    title: "javascript",
+    link: "/catalog/javascript",
+  },
+  {
+    title: "javascript",
+    link: "/catalog/AI",
+  },
+  {
+    title: "javascript",
+    link: "/catalog/Machine Learning",
+  },
   
 ];
 

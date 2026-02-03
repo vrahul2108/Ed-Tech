@@ -15,11 +15,13 @@ import ExploreMore from '../components/core/HomePage/ExploreMore'
 const Home = () => {
   return (
     <div>
-      
-      <div className='relative flex flex-col items-center justify-between w-11/12 mx-auto text-white max-w-maxContent'>
+   
+      <div className='relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center 
+      text-white justify-between'>
 
         <Link to={"/signup"}>
-            <div className='p-1 mx-auto mt-16 font-bold transition-all duration-200 rounded-full group bg-richblack-800 text-richblack-200 hover:scale-95 w-fit'>
+            <div className=' group mt-16 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
+            transition-all duration-200 hover:scale-95 w-fit'>
                 <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
                 transition-all duration-200 group-hover:bg-richblack-900'>
                     <p>Become an Instructor</p>
@@ -29,16 +31,16 @@ const Home = () => {
 
         </Link>
 
-        <div className='text-4xl font-semibold text-center mt-7'>
+        <div className='text-center text-4xl font-semibold mt-7'>
             Empower Your Future with
             <HighlightText text={"Coding Skills"} />
         </div>
 
-        <div className='mt-4 w-[90%] text-center font-medium text-[16px] text-richblack-300'>
+        <div className=' mt-4 w-[90%] text-center text-lg font-bold text-richblack-300'>
             With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors. 
         </div>
 
-        <div className='flex flex-row mt-8 gap-7'>
+        <div className='flex flex-row gap-7 mt-8'>
             <CTAButton active={true} linkto={"/signup"}> 
                 Learn More
             </CTAButton>
@@ -48,7 +50,7 @@ const Home = () => {
             </CTAButton>
         </div>
 
-        <div className='w-5/6 mx-3 my-12 shadow-blue-200'>
+        <div className='mx-3 my-12 shadow-blue-200'>
             <video
             muted
             loop
@@ -58,7 +60,7 @@ const Home = () => {
             </video>
         </div>
 
-       
+        
         <div>
             <CodeBlocks 
                 position={"lg:flex-row"}
@@ -92,7 +94,7 @@ const Home = () => {
             />
         </div>
 
-               
+             
         <div>
             <CodeBlocks 
                 position={"lg:flex-row-reverse"}
@@ -133,9 +135,9 @@ const Home = () => {
       <div className='bg-pure-greys-5 text-richblack-700'>
             <div className='homepage_bg h-[310px]'>
 
-                <div className='flex flex-col items-center justify-between w-11/12 gap-5 mx-auto max-w-maxContent'>
+                <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
                     <div className='h-[150px]'></div>
-                    <div className='flex flex-row text-white gap-7 '>
+                    <div className='flex flex-row gap-7 text-white '>
                         <CTAButton active={true} linkto={"/signup"}>
                             <div className='flex items-center gap-3' >
                                 Explore Full Catalog
@@ -155,7 +157,7 @@ const Home = () => {
 
             </div>
 
-            <div className='flex flex-col items-center justify-between w-11/12 mx-auto max-w-maxContent gap-7'>
+            <div className='mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
 
                 <div className='flex flex-row gap-5 mb-10 mt-[95px]'>
                     <div className='text-4xl font-semibold w-[45%]'>
@@ -183,20 +185,24 @@ const Home = () => {
                 <LearningLanguageSection />
 
             </div>
-      </div>
 
-
-   
-      <div className='flex-col items-center justify-between w-11/12 gap-8 mx-auto text-white max-w-maxContent first-letter bg-richblack-900'>
-
-            <InstructorSection />
-
-            <h2 className='mt-10 text-4xl text-center font-semobold'>...</h2>
             
+
       </div>
 
 
      
+      <div className='w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
+
+            <InstructorSection />
+
+            <h2 className='text-center text-4xl font-semobold mt-10'>review from Other Learners</h2>
+           
+            
+      </div>
+
+
+   
       <Footer />
 
     </div>
