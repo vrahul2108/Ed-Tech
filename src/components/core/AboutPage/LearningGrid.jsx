@@ -88,7 +88,6 @@ const LearningGrid = () => {
                         </p>
                     </div>)
                 }
-
                 </div>
             )
         } )
