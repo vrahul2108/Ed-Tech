@@ -15,7 +15,7 @@ import ExploreMore from '../components/core/HomePage/ExploreMore'
 const Home = () => {
   return (
     <div>
-      {/*Section1  */}
+      
       <div className='relative flex flex-col items-center justify-between w-11/12 mx-auto text-white max-w-maxContent'>
 
         <Link to={"/signup"}>
@@ -58,7 +58,7 @@ const Home = () => {
             </video>
         </div>
 
-        {/* Code Section 1 */}
+       
         <div>
             <CodeBlocks 
                 position={"lg:flex-row"}
@@ -92,7 +92,7 @@ const Home = () => {
             />
         </div>
 
-                {/* Code Section 2 */}
+               
         <div>
             <CodeBlocks 
                 position={"lg:flex-row-reverse"}
@@ -129,7 +129,7 @@ const Home = () => {
             <ExploreMore />
       </div>
 
-      {/*Section 2  */}
+     
       <div className='bg-pure-greys-5 text-richblack-700'>
             <div className='homepage_bg h-[310px]'>
 
@@ -186,17 +186,17 @@ const Home = () => {
       </div>
 
 
-      {/*Section 3 */}
+   
       <div className='flex-col items-center justify-between w-11/12 gap-8 mx-auto text-white max-w-maxContent first-letter bg-richblack-900'>
 
             <InstructorSection />
 
             <h2 className='mt-10 text-4xl text-center font-semobold'>...</h2>
-            {/* Review Slider here */}
+            
       </div>
 
 
-      {/*Footer */}
+     
       <Footer />
 
     </div>
